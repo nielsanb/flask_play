@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> We are passing content via Jinja! </h1>
+    <p> We send this data from the backend function: {{ variable_to_pass }} </p>
+
+    <h1> Note that you can also write python-like expressions with jinja, such as for-loops and if-statements</h1>
+    {% for number in range(10) %}
+        <li> {{number}} </li>
+    {% endfor %}
+
+    <h1> Note that passed this list as an argument to the backend (only via the right url!) </h1>
+    {% if list_to_pass %}
+        {% for name in list_to_pass %}
+            <ul> {{name}} </ul>
+        {% endfor %}
+
+    {% elif 1==1 %}
+        <p> Nothing to display </p>
+
+    {% else %}
+        <p> Realllly Nothing to display </p>
+
+    {% endif %}
+</body>
+</html>
