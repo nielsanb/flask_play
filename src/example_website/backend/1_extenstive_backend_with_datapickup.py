@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import redirect, url_for
 from flask import request
+from flask import make_response
 
 app = Flask(__name__)
 
@@ -8,6 +9,7 @@ app = Flask(__name__)
 def homepage():
     return "<h1>Hello!<h1> This is my page!"
 
+# ----- URL DATA -----
 ### 1. Picking up a value from the URL
 ### A. from URL by <name>
 ### B. passing it automatically into the functions parameter (name):
@@ -16,6 +18,8 @@ def homepage():
 def user(name):
     return f"Hello {name}!"
 
+
+# ----- QUERY STRING DATA -----
 ### 2. Picking up the QUERY STRING
 ### A. Note that we do not pass along data into the function
 ### B. Instead we pick it up (and set a vairable) via the requests function that we imported.
@@ -29,6 +33,7 @@ def qstring():
     name = request.args.get('name')
     return f'Query string that you send was: {query_string}, and the name was: { name }'
 
+# ----- POST REQUEST DATA -----
 ### 3. Picking up data from a POST request (and putting it in a file)
 ### A. Note the methods=[] parameter makes that the server accepts POST data.
 ### B. request.json returns the parsed JSON data that is POSTED with the request.
@@ -44,7 +49,11 @@ def data_via_post():
     else:
         return "Method not allowed!"
 
+# ----- COOKIE -----
+### Cookie has been done in another file!
 
+
+# ----- Redirection -----
 ### 4. Redirecting and incoming url
 ### A. Works via the imported functions 'redirect' and 'url_for'
 ### B. note that url_for does NOT point to a url, but the related function! 
